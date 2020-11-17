@@ -13,7 +13,7 @@ let routes: Route[] = [
 
 @NgModule({
   declarations: [
-    AppComponent, DatePickerComponent
+    AppComponent, DatePickerComponent, FormDemoComponent
   ],
   imports: [
     BrowserModule, FormsModule, RouterModule.forRoot(routes)
