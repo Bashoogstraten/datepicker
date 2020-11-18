@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { Route, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
 import { FormDemoComponent } from './components/form-demo/form-demo.component';
 
-let routes: Route[] = [
+const routes: Route[] = [
   { path: 'datepicker', component: DatePickerComponent },
   { path: 'formdemo', component: FormDemoComponent }
 ];
@@ -16,7 +16,7 @@ let routes: Route[] = [
     AppComponent, DatePickerComponent, FormDemoComponent
   ],
   imports: [
-    BrowserModule, FormsModule, RouterModule.forRoot(routes)
+    BrowserModule, ReactiveFormsModule, RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

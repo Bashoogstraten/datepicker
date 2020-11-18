@@ -1,26 +1,17 @@
-<form (submit)="addContact()" #addContactForm="ngForm">
-    <div>
-        <label for="firstName">First name:</label>
-        <input type="text" required name="firstName" id="inputFirstName" class="form-control"
-            [(ngModel)]="newContact.firstName" #firstName="ngModel">
-            <div *ngIf="firstName.errors?.required">Please enter your first name</div>
-    </div>
-    <div>
-        <label for="surname">Surname:</label>
-        <input type="text" required name="surname" id="inputSurname" class="form-control"
-            [(ngModel)]="newContact.surname" #surname="ngModel">
-            <div *ngIf="surname.errors?.required">Please enter your surname</div>
-    </div>
-    <div>
-        <label for="email">E-mail address:</label>
-        <input type="text" required name="email" id="inputEmail" class="form-control"
-            [(ngModel)]="newContact.email" #email="ngModel">
-            <div *ngIf="email.errors?.required">Please enter your email</div>
-    </div>
-    <div>
-        <button class="btn btn-primary" [disabled]="!addContactForm.valid">Add</button>
-    </div>
-
+<form (ngSubmit)="addContact()" [formGroup]="addContactForm">
+	<div>
+		<label for="firstName">First name:</label>
+		<input type="firstName" formControlName="firstName">
+	</div>
+	<div>
+		<label for="surname">Surname:</label>
+		<input type="surname" formControlName="surname">
+	</div>
+	<div>
+		<label for="email">E-mail address:</label>
+		<input type="email" formControlName="email">
+    <button>Add</button>
+	</div>
 </form>
 
 <table class="table">
