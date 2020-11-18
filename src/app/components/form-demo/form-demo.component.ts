@@ -1,7 +1,6 @@
 import { ConvertActionBindingResult } from '@angular/compiler/src/compiler_util/expression_converter';
 import { Component, OnInit } from '@angular/core';
 import { Contact } from 'src/app/models/contact';
-import { Person } from 'src/app/models/person';
 
 @Component({
   selector: 'app-form-demo',
@@ -11,11 +10,6 @@ import { Person } from 'src/app/models/person';
 
 export class FormDemoComponent {
 
-  persons: Person[] = [
-    new Person('Sam', 'Smith', 'sam.smith@music.com'),
-    new Person('Frank', 'Muscles', 'frank@muscles.com'),
-    new Person('Eddy', 'Valentino', 'eddy@valfam.co.uk')
-  ]
 
   contacts: Contact[] = [
     { firstName: 'Sam', surname: 'Smith', email: 'sam.smith@music.com' },
@@ -23,11 +17,17 @@ export class FormDemoComponent {
     { firstName: 'Eddy', surname: 'Valentino', email: 'eddy@valfam.co.uk' }
   ];
 
-  newContact = new Person();
+  newContact = {} as Contact;
 
-  addContact() {
-    this.persons.push(this.newContact);
-    this.newContact = new Person();
+  addContact(): void {
+    this.contacts.push(this.newContact);
+    this.newContact = {} as Contact;
+    console.log(this.newContact);
+  }
+
+  delete(c: Contact): void {
+    const i = this.contacts.indexOf(c);
+    this.contacts.splice(i, 1);
   }
 
 }

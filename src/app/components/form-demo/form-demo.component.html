@@ -1,26 +1,42 @@
+<form (submit)="addContact()" #addContactForm="ngForm">
+    <div>
+        <label for="firstName">First name:</label>
+        <input type="text" required name="firstName" id="inputFirstName" class="form-control"
+            [(ngModel)]="newContact.firstName" #firstName="ngModel">
+            <div *ngIf="firstName.errors?.required">Please enter your first name</div>
+    </div>
+    <div>
+        <label for="surname">Surname:</label>
+        <input type="text" required name="surname" id="inputSurname" class="form-control"
+            [(ngModel)]="newContact.surname" #surname="ngModel">
+            <div *ngIf="surname.errors?.required">Please enter your surname</div>
+    </div>
+    <div>
+        <label for="email">E-mail address:</label>
+        <input type="text" required name="email" id="inputEmail" class="form-control"
+            [(ngModel)]="newContact.email" #email="ngModel">
+            <div *ngIf="email.errors?.required">Please enter your email</div>
+    </div>
+    <div>
+        <button class="btn btn-primary" [disabled]="!addContactForm.valid">Add</button>
+    </div>
 
-<form (submit)="addContact()">
-    <label for="inputFirstName">First name:</label>
-    <input type="text" [(ngModel)]="newContact.firstName" name="firstName" id="inputFirstName" class="form-control">
-    <label for="inputSurname">Surname:</label>
-    <input type="text" [(ngModel)]="newContact.surname" name="surname" id="inputSurname" class="form-control">
-    <label for="inputEmail">E-mail address:</label>
-    <input type="text" [(ngModel)]="newContact.email" name="email" id="inputEmail" class="form-control">
-    <button class="btn btn-primary">Add</button>
 </form>
 
 <table class="table">
     <tr>
-        <th>Name</th>
-        <th>E-mail address</th>
-        <th></th>
+        <th scope="col">Name</th>
+        <th scope="col">E-mail address</th>
+        <th scope="col"></th>
     </tr>
-    <tr *ngFor="let contact of contacts">
+    <tr scope="row" *ngFor="let contact of contacts">
         <td>{{contact.firstName}} {{contact.surname}}</td>
         <td>{{contact.email}}</td>
         <td>
-            <button class="btn">Edit</button>
-            <button class="btn btn-danger">Delete</button>
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button class="btn btn-primary">Edit</button>
+                <button class="btn btn-danger" (click)="delete(contact)">Delete!</button>
+            </div>
         </td>
     </tr>
 </table>
