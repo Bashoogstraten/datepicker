@@ -5,6 +5,8 @@ import { Route, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
 import { FormDemoComponent } from './components/form-demo/form-demo.component';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
+import { ContactListComponent } from './components/contact-list/contact-list.component';
 
 const routes: Route[] = [
   { path: 'datepicker', component: DatePickerComponent },
@@ -13,7 +15,7 @@ const routes: Route[] = [
 
 @NgModule({
   declarations: [
-    AppComponent, DatePickerComponent, FormDemoComponent
+    AppComponent, DatePickerComponent, FormDemoComponent, ContactFormComponent, ContactListComponent
   ],
   imports: [
     BrowserModule, ReactiveFormsModule, RouterModule.forRoot(routes)
