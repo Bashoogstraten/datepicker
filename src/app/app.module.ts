@@ -18,7 +18,7 @@ const routes: Route[] = [
     AppComponent, DatePickerComponent, FormDemoComponent, ContactFormComponent, ContactListComponent
   ],
   imports: [
-    BrowserModule, ReactiveFormsModule, RouterModule.forRoot(routes)
+    BrowserModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,11 +7,21 @@
         <th scope="col"></th>
     </tr>
     <tr scope="row" *ngFor="let contact of contactList">
-        <td>{{contact.firstName}} {{contact.surname}}</td>
-        <td>{{contact.email}}</td>
+        <td *ngIf="!contact.edit">{{contact.firstName}} {{contact.surname}}</td>
+        <td *ngIf="contact.edit">
+            <input type="text" id="firstName" name="firstName" [(ngModel)]="contact.firstName">
+            <input type="text" id="surname" name="surname" [(ngModel)]="contact.surname">
+        </td>
+        <td *ngIf="!contact.edit">{{contact.email}}</td>
+        <td *ngIf="contact.edit">
+            <input type="text" id="email" name="email" [(ngModel)]="contact.email"></td>
+        <td>
         <td>
             <div class="btn-group" role="group" aria-label="Basic example">
-                <button class="btn btn-primary">Edit</button>
+                <button class="btn btn-primary" (click)="edit(contact)">
+                    <span *ngIf="!contact.edit">Edit</span>
+                    <span *ngIf="contact.edit">Save</span>
+                </button>
                 <button class="btn btn-danger" (click)="delete(contact)">Delete!</button>
             </div>
         </td>
