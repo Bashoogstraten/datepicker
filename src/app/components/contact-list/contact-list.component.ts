@@ -1,18 +1,25 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Contact } from 'src/app/models/contact';
+import { ContactServiceService } from 'src/app/services/contact-service.service';
+
 
 @Component({
   selector: 'app-contact-list',
   templateUrl: './contact-list.component.html',
   styleUrls: ['./contact-list.component.css']
 })
-export class ContactListComponent {
+export class ContactListComponent implements OnInit {
 
-  @Input() contactList: Contact[];
+  contactList: Contact[];
+
+  constructor(private contactService: ContactServiceService){}
+
+  ngOnInit(): void {
+    this.contactService.getContacts().subscribe(contacts => {this.contactList = contacts; });
+  }
 
   delete(c: Contact): void {
-    const i = this.contactList.indexOf(c);
-    this.contactList.splice(i, 1);
+    this.contactService.delete(c);
   }
 
   edit(c: Contact): void {

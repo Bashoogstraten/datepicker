@@ -1,0 +1,22 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "firstName": "Sam",
+      "surname": "Smith",
+      "email": "sam.smith@music.com"
+    },
+    {
+      "id": 2,
+      "firstName": "Frank",
+      "surname": "Frank",
+      "email": "frank@muscles.com"
+    },
+    {
+      "firstName": "test",
+      "surname": "test",
+      "email": "test@test.nl",
+      "id": 5
+    }
+  ]
+}

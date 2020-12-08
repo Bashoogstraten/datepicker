@@ -7,6 +7,7 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
 import { FormDemoComponent } from './components/form-demo/form-demo.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { ContactListComponent } from './components/contact-list/contact-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Route[] = [
   { path: 'datepicker', component: DatePickerComponent },
@@ -18,7 +19,7 @@ const routes: Route[] = [
     AppComponent, DatePickerComponent, FormDemoComponent, ContactFormComponent, ContactListComponent
   ],
   imports: [
-    BrowserModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(routes)
+    BrowserModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(routes), HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

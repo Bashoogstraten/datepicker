@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Contact } from 'src/app/models/contact';
+import { ContactServiceService } from 'src/app/services/contact-service.service';
 
 @Component({
   selector: 'app-contact-form',
@@ -10,8 +11,6 @@ import { Contact } from 'src/app/models/contact';
 
 export class ContactFormComponent {
 
-  @Input() contacts: Contact[];
-
   addContactForm = new FormGroup({
     // all fields
     firstName: new FormControl('', Validators.required),
@@ -19,8 +18,16 @@ export class ContactFormComponent {
     email: new FormControl('', Validators.pattern('^.+@.+\.nl$'))
   });
 
+  contacts: Contact[];
+
+  constructor(private contactService: ContactServiceService) { }
+
+  // ngOnInit(): void {
+  //   this.contactService.getContacts().subscribe(contacts => {this.contacts = contacts; });
+  // }
+
   addContact(): void {
-    this.contacts.push(this.addContactForm.value);
+    this.contactService.add(this.addContactForm.value);
     console.log('Submitted value:', this.addContactForm.value);
   }
 
